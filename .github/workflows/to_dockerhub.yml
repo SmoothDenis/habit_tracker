@@ -17,8 +17,8 @@ jobs:
           distribution: 'adopt'
       - name: print secrets
         run: |
-            echo "$PROD_CONF" >> /home/app/src/main/resources/application.properties
-            echo "$TEST_CONF" >> /home/app/src/test/resources/application.properties
+            echo "$PROD_CONF" >> /home/runner/work/habit_tracker/habit_tracker/src/main/resources/application.properties
+            echo "$TEST_CONF" >> /home/runner/work/habit_tracker/habit_tracker/src/test/resources/application.properties
         shell: bash
         env:
           PROD_CONF: ${{secrets.PROD_CONF}}
