@@ -15,22 +15,6 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
-      # - name: print secrets
-      #   run: |
-      #       echo "$PROD_CONF" >> /home/runner/work/habit_tracker/habit_tracker/src/main/resources/application.properties
-      #       echo "$TEST_CONF" >> /home/runner/work/habit_tracker/habit_tracker/src/test/resources/application.properties
-      #   shell: bash
-      #   env:
-      #     PROD_CONF: ${{secrets.PROD_CONF}}
-      #     TEST_CONF: ${{secrets.TEST_CONF}}
-      - uses: "finnp/create-file-action@master"
-        env:
-          FILE_NAME: "src/main/resources/application.properties"
-          FILE_DATA: ${{secrets.PROD_CONF}}
-      - uses: "finnp/create-file-action@master"
-        env:
-          FILE_NAME: "src/test/resources/application.properties"
-          FILE_DATA: ${{secrets.TEST_CONF}}
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Login to DockerHub
